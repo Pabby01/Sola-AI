@@ -1,131 +1,294 @@
+<!DOCTYPE html>
 <html>
-  <head>
+<head>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
     <link
-      rel="stylesheet"
-      as="style"
-      onload="this.rel='stylesheet'"
-      href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
+        rel="stylesheet"
+        as="style"
+        onload="this.rel='stylesheet'"
+        href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
     />
-
-    <title>Galileo Design</title>
+    <title>DeFi AI Chat</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
-
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
-  </head>
-  <body>
-    <div class="relative flex size-full min-h-screen flex-col bg-[#111618] dark group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
-      <div class="layout-container flex h-full grow flex-col">
-        <div class="gap-1 px-6 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col w-80">
-            <div class="flex h-full min-h-[700px] flex-col justify-between bg-[#111618] p-4">
-              <div class="flex flex-col gap-4">
-                <div class="flex flex-col gap-2">
-                  <div class="flex items-center gap-3 px-3 py-2 rounded-xl bg-[#283339]"><p class="text-white text-sm font-medium leading-normal">DeFi AI</p></div>
-                  <div class="flex items-center gap-3 px-3 py-2"><p class="text-white text-sm font-medium leading-normal">NFT AI</p></div>
-                  <div class="flex items-center gap-3 px-3 py-2"><p class="text-white text-sm font-medium leading-normal">Dev AI</p></div>
-                </div>
-              </div>
-              <div class="flex flex-col gap-4">
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 bg-[#2badee] text-[#111618] text-sm font-bold leading-normal tracking-[0.015em]"
-                >
-                  <span class="truncate">New Chat</span>
-                </button>
-                <div class="flex flex-col gap-1">
-                  <div class="flex items-center gap-3 px-3 py-2"><p class="text-white text-sm font-medium leading-normal">Swap</p></div>
-                  <div class="flex items-center gap-3 px-3 py-2"><p class="text-white text-sm font-medium leading-normal">Analyze NFT</p></div>
-                  <div class="flex items-center gap-3 px-3 py-2"><p class="text-white text-sm font-medium leading-normal">Debug Contract</p></div>
-                </div>
-              </div>
-            </div>
-            <div class="p-4 @container">
-              <div class="flex flex-1 flex-col items-start justify-between gap-4 rounded-xl border border-[#3b4b54] bg-[#111618] p-5 @[480px]:flex-row @[480px]:items-center">
-                <div class="flex flex-col gap-1">
-                  <p class="text-white text-base font-bold leading-tight">Live APY</p>
-                  <p class="text-[#9db0b9] text-base font-normal leading-normal">2.5% • 1,000+ pools</p>
-                </div>
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#2badee] text-[#111618] text-sm font-medium leading-normal"
-                >
-                  <span class="truncate">Explore</span>
-                </button>
-              </div>
-            </div>
-            <div class="p-4 @container">
-              <div class="flex flex-1 flex-col items-start justify-between gap-4 rounded-xl border border-[#3b4b54] bg-[#111618] p-5 @[480px]:flex-row @[480px]:items-center">
-                <div class="flex flex-col gap-1">
-                  <p class="text-white text-base font-bold leading-tight">NFT Price</p>
-                  <p class="text-[#9db0b9] text-base font-normal leading-normal">0.1 ETH</p>
-                </div>
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#2badee] text-[#111618] text-sm font-medium leading-normal"
-                >
-                  <span class="truncate">Explore</span>
-                </button>
-              </div>
-            </div>
-            <div class="p-4 @container">
-              <div class="flex flex-1 flex-col items-start justify-between gap-4 rounded-xl border border-[#3b4b54] bg-[#111618] p-5 @[480px]:flex-row @[480px]:items-center">
-                <div class="flex flex-col gap-1">
-                  <p class="text-white text-base font-bold leading-tight">Solana Transaction</p>
-                  <p class="text-[#9db0b9] text-base font-normal leading-normal">10 minutes ago</p>
-                </div>
-                <button
-                  class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#2badee] text-[#111618] text-sm font-medium leading-normal"
-                >
-                  <span class="truncate">Explore</span>
-                </button>
-              </div>
-            </div>
-          </div>
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div class="flex flex-wrap justify-between gap-3 p-4">
-              <p class="text-white tracking-light text-[32px] font-bold leading-tight min-w-72">DeFi AI</p>
-              <button
-                class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#283339] text-white text-sm font-medium leading-normal"
-              >
-                <span class="truncate">Connect Wallet</span>
-              </button>
-            </div>
-            <div class="flex gap-3 p-4">
-              <div
-                class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-                style='background-image: url("https://cdn.usegalileo.ai/sdxl10/fed46589-76bb-4ca3-a976-757bd959d982.png");'
-              ></div>
-              <div class="flex flex-1 flex-col items-stretch gap-2">
-                <div class="flex flex-col gap-1">
-                  <div class="flex flex-wrap items-center gap-3">
-                    <p class="text-white text-base font-bold leading-tight">DeFi AI</p>
-                    <p class="text-[#9db0b9] text-sm font-normal leading-normal">12:00 PM</p>
-                  </div>
-                  <p class="text-white text-base font-normal leading-normal">What's your question?</p>
-                </div>
-              </div>
-            </div>
-            <div class="flex items-center px-4 py-3 gap-3 @container">
-              <label class="flex flex-col min-w-40 h-12 flex-1">
-                <div class="flex w-full flex-1 items-stretch rounded-xl h-full">
-                  <input
-                    placeholder="Ask me anything"
-                    class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-white focus:outline-0 focus:ring-0 border-none bg-[#283339] focus:border-none h-full placeholder:text-[#9db0b9] px-4 rounded-r-none border-r-0 pr-2 text-base font-normal leading-normal"
-                    value=""
-                  />
-                  <div class="flex border-none bg-[#283339] items-center justify-center pr-4 rounded-r-xl border-l-0 !pr-2">
-                    <div class="flex items-center gap-4 justify-end">
-                      <button
-                        class="min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-8 px-4 bg-[#2badee] text-[#111618] text-sm font-medium leading-normal hidden @[480px]:block"
-                      >
-                        <span class="truncate">Send</span>
-                      </button>
-                    </div>
-                  </div>
-                </div>
-              </label>
-            </div>
-          </div>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
+    <style>
+        body {
+        background-color: #32474f; /* Your base background color */
+        font-family: 'Space Grotesk', sans-serif;
+        color: white;
+        position: relative; /* Needed for pseudo-element positioning */
+    }
+
+    body::before {
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('/images/web3-bg.jpg');
+        background-size: cover;
+        background-repeat: no-repeat;
+        filter: blur(30px);
+        z-index: -1; /* Place it behind the content */
+    }
+
+        #sidebar {
+            transition: transform 0.3s ease-in-out;
+            transform: translateX(-100%);
+        }
+
+        #sidebar.open {
+            transform: translateX(0);
+        }
+
+        .chat-bubble {
+            max-width: 80%;
+            padding: 15px 20px;
+            border-radius: 25px;
+            margin-bottom: 15px;
+            word-wrap: break-word;
+            display: flex;
+            align-items: flex-start;
+        }
+
+        .chat-bubble.user {
+            background-color: #355a6e;
+            align-self: flex-end;
+        }
+
+        .chat-bubble.bot {
+            background-color: #676f74;
+            align-self: flex-end;
+        }
+        .chat-bubble i {
+        width: 30px; /* Adjust icon size */
+        height: 30px;
+        border-radius: 50%; /* Make icons rounded */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px; /* Space between icon and text */
+        background: linear-gradient(135deg, #8a2be2, #00bfff); /* Purple-blue gradient */
+        box-shadow: 0 0 10px rgba(138, 43, 226, 0.7); /* Glowing effect */
+        color: white; /* Icon color */
+    }
+    </style>
+</head>
+<body class="bg-[#111618] text-white font-['Space_Grotesk',_sans-serif] flex">
+    <div class="flex flex-col flex-1 min-h-screen">
+        <div class="flex items-center justify-between p-4">
+            <button id="sidebar-toggle" class="bg-transparent border-none p-0">
+                <i class="fas fa-bars text-xl"></i>
+            </button>
+            <h1 class="text-2xl font-bold">DeFi AI</h1>
+            <button class="bg-transparent border-none p-0">
+                <i class="fas fa-user-circle text-3xl"></i>
+            </button>
         </div>
-      </div>
+        <div class="flex flex-1 p-4">
+            <div class="w-full max-w-xl mx-auto flex flex-col">
+                <div id="chat-messages" class="flex-1 overflow-y-auto mb-4">
+                    </div>
+                <div class="flex items-center">
+                    <input
+                        id="user-input"
+                        type="text"
+                        placeholder="Ask me anything"
+                        class="flex-1 bg-[#283339] rounded-l-xl px-4 py-3 focus:outline-none"
+                    />
+                    <button
+                        id="send-button"
+                        class="bg-[#2badee] text-[#111618] px-4 py-3 rounded-r-xl"
+                    >
+                        Send
+                    </button>
+                </div>
+            </div>
+        </div>
     </div>
-  </body>
+    <aside id="sidebar" class="w-64 bg-[#1a202c] p-4 flex flex-col fixed top-0 left-0 h-full">
+        <div class="flex items-center justify-end mb-6">
+            <button id="close-sidebar" class="bg-transparent border-none p-0">
+                <i class="fas fa-times text-xl"></i>
+            </button>
+        </div>
+        <button id="new-chat-button" class="bg-transparent text-left px-0 py-2 mb-4 hover:bg-[#283339] rounded-md">
+            <i class="fas fa-plus mr-2"></i>
+            <span class="font-medium">New chat</span>
+        </button>
+        <div id="previous-chats" class="mb-4">
+            <h2 class="text-sm text-gray-400 mb-2">Previous Chats</h2>
+            </div>
+        <div class="mt-auto">
+            <a href="/settings" class="block p-2 hover:bg-[#283339] rounded-md">
+                <i class="fas fa-cog mr-2"></i>
+                <span class="text-sm">Settings</span>
+            </a>
+        </div>
+    </aside>
+    <script>
+        const chatMessages = document.getElementById('chat-messages');
+        const userInput = document.getElementById('user-input');
+        const sendButton = document.getElementById('send-button');
+        const newChatButton = document.getElementById('new-chat-button');
+        const sidebar = document.getElementById('sidebar');
+        const sidebarToggle = document.getElementById('sidebar-toggle');
+        const closeSidebar = document.getElementById('close-sidebar');
+        const previousChats = document.getElementById('previous-chats');
+
+        let conversations = []; // Store conversation history
+        // Function to toggle sidebar visibility
+        function toggleSidebar() {
+            sidebar.classList.toggle('open');
+        }
+
+        sidebarToggle.addEventListener('click', toggleSidebar);
+        closeSidebar.addEventListener('click', toggleSidebar);
+
+        sendButton.addEventListener('click', sendMessage);
+        userInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter') {
+                sendMessage();
+            }
+        });
+
+        newChatButton.addEventListener('click', startNewChat);
+
+        function startNewChat() {
+            chatMessages.innerHTML = '';
+            addBotMessage('Welcome! How can I assist you today?');
+            conversations.push(); // Start a new conversation
+            updatePreviousChats();
+        }
+
+        function sendMessage() {
+            const message = userInput.value.trim();
+            if (message) {
+                addUserMessage(message);
+                userInput.value = '';
+                getApiResponse(message);
+            }
+        }
+
+        function addUserMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-bubble', 'user');
+            messageDiv.innerHTML = `<i class="fas fa-user mr-2"></i><span>${message}</span>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Add user message to the current conversation
+            if (conversations.length > 0) {
+                conversations[conversations.length - 1].push({ role: 'user', content: message });
+            }
+        }
+
+        function addBotMessage(message) {
+            const messageDiv = document.createElement('div');
+            messageDiv.classList.add('chat-bubble', 'bot');
+            messageDiv.innerHTML = `<i class="fas fa-robot mr-2"></i><span>${message}</span>`;
+            chatMessages.appendChild(messageDiv);
+            chatMessages.scrollTop = chatMessages.scrollHeight;
+
+            // Add bot message to the current conversation
+            if (conversations.length > 0) {
+                conversations[conversations.length - 1].push({ role: 'bot', content: message });
+            }
+            updatePreviousChats();
+        }
+
+        function getApiResponse(message) {
+            const apiUrl = 'YOUR_API_URL_HERE';
+
+            fetch(apiUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ message: message }),
+            })
+            .then(response => response.json())
+            .then(data => {
+                addBotMessage(data.response);
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                addBotMessage('Sorry, I encountered an error.');
+            });
+        }
+
+        function updatePreviousChats() {
+            previousChats.innerHTML = '<h2 class="text-sm text-gray-400 mb-2">Previous Chats</h2>'; // Clear previous list
+
+            conversations.forEach((conversation, index) => {
+                // Get a short summary of the conversation
+                let summary = conversation.length > 0 ? conversation[0].content.substring(0, 30) + '...' : 'New Chat';
+                const chatDiv = document.createElement('div');
+                chatDiv.classList.add('p-2', 'hover:bg-[#283339]', 'rounded-md', 'mb-1', 'cursor-pointer');
+                chatDiv.innerHTML = `<i class="fas fa-equals mr-2"></i><span class="text-sm">Chat ${index + 1}: ${summary}</span>`;
+                chatDiv.addEventListener('click', () => {
+                    loadConversation(index);
+                });
+                previousChats.appendChild(chatDiv);
+            });
+        }
+        function loadConversation(index) {
+    chatMessages.innerHTML = ''; // Clear current chat
+
+    const conversation = conversations[index];
+    if (conversation) {
+        conversation.forEach(message => {
+            if (message.role === 'user') {
+                addUserMessage(message.content);
+            } else if (message.role === 'bot') {
+                addBotMessage(message.content);
+            }
+        });
+    }
+}
+        // Initial welcome message and conversation
+        startNewChat();
+        updatePreviousChats();
+
+        // Location functionality (optional)
+        function getLocation() {
+            if (navigator.geolocation) {
+                navigator.geolocation.getCurrentPosition(showPosition, showError);
+            } else {
+                console.log('Geolocation is not supported by this browser.');
+            }
+        }
+
+        function showPosition(position) {
+            console.log(
+                'Latitude: ' +
+                    position.coords.latitude +
+                    '<br>Longitude: ' +
+                    position.coords.longitude
+            );
+            // You can use the coordinates to display location information
+        }
+
+        function showError(error) {
+            switch (error.code) {
+                case error.PERMISSION_DENIED:
+                    console.log('User denied the request for geolocation.');
+                    break;
+                case error.POSITION_UNAVAILABLE:
+                    console.log('Location information is unavailable.');
+                    break;
+                case error.TIMEOUT:
+                    console.log('The request to get user location timed out.');
+                    break;
+                case error.UNKNOWN_ERROR:
+                    console.log('An unknown error occurred.');
+                    break;
+            }
+        }
+
+        // getLocation(); // Call this to attempt to get the user's location
+    </script>
+</body>
 </html>
