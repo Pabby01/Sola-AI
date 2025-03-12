@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
     <link
         rel="stylesheet"
@@ -14,25 +15,25 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" />
     <style>
         body {
-        background-color: #32474f; /* Your base background color */
-        font-family: 'Space Grotesk', sans-serif;
-        color: white;
-        position: relative; /* Needed for pseudo-element positioning */
-    }
+            background-color: #32474f;
+            font-family: 'Space Grotesk', sans-serif;
+            color: white;
+            position: relative;
+        }
 
-    body::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        background-image: url('/images/web3-bg.jpg');
-        background-size: cover;
-        background-repeat: no-repeat;
-        filter: blur(30px);
-        z-index: -1; /* Place it behind the content */
-    }
+        body::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('/images/web3-bg.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            filter: blur(30px);
+            z-index: -1;
+        }
 
         #sidebar {
             transition: transform 0.3s ease-in-out;
@@ -44,7 +45,8 @@
         }
 
         .chat-bubble {
-            max-width: 80%;
+            width: fit-content; /* Adjust width to fit content */
+            max-width: 90%; /* Prevent bubbles from being too wide */
             padding: 15px 20px;
             border-radius: 25px;
             margin-bottom: 15px;
@@ -60,20 +62,21 @@
 
         .chat-bubble.bot {
             background-color: #676f74;
-            align-self: flex-end;
+            align-self: flex-start; /* Corrected to flex-start */
         }
+
         .chat-bubble i {
-        width: 30px; /* Adjust icon size */
-        height: 30px;
-        border-radius: 50%; /* Make icons rounded */
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-right: 10px; /* Space between icon and text */
-        background: linear-gradient(135deg, #8a2be2, #00bfff); /* Purple-blue gradient */
-        box-shadow: 0 0 10px rgba(138, 43, 226, 0.7); /* Glowing effect */
-        color: white; /* Icon color */
-    }
+            width: 30px;
+            height: 30px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            background: linear-gradient(135deg, #8a2be2, #00bfff);
+            box-shadow: 0 0 10px rgba(138, 43, 226, 0.7);
+            color: white;
+        }
     </style>
 </head>
 <body class="bg-[#111618] text-white font-['Space_Grotesk',_sans-serif] flex">
@@ -91,7 +94,7 @@
             <div class="w-full max-w-xl mx-auto flex flex-col">
                 <div id="chat-messages" class="flex-1 overflow-y-auto mb-4">
                     </div>
-                <div class="flex items-center">
+                <div class="flex items-center p-2">
                     <input
                         id="user-input"
                         type="text"
