@@ -1,4 +1,5 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
   <head>
     <link rel="preconnect" href="https://fonts.gstatic.com/" crossorigin="" />
     <link
@@ -8,248 +9,538 @@
       href="https://fonts.googleapis.com/css2?display=swap&amp;family=Noto+Sans%3Awght%40400%3B500%3B700%3B900&amp;family=Space+Grotesk%3Awght%40400%3B500%3B700"
     />
 
-    <title>Galileo Design</title>
+    <title>Solana AI</title>
     <link rel="icon" type="image/x-icon" href="data:image/x-icon;base64," />
 
-    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+   <link rel="stylesheet" href="styles.css">
   </head>
-  <body>
-    <div class="relative flex size-full min-h-screen flex-col bg-[#111618] dark group/design-root overflow-x-hidden" style='font-family: "Space Grotesk", "Noto Sans", sans-serif;'>
-      <div class="layout-container flex h-full grow flex-col">
-        <header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-b-[#283339] px-10 py-3">
-          <div class="flex items-center gap-4 text-white">
-            <div class="size-4">
-              <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path
-                  d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"
-                  fill="currentColor"
-                ></path>
+<body>
+  <!-- Header Section -->
+<header class="fixed top-0 left-0 right-0 bg-gray-900/80 backdrop-blur-md z-50 py-4 px-6 border-b border-purple-500/20">
+  <div class="container mx-auto">
+    <div class="flex items-center justify-between">
+      <!-- Logo and Site Title -->
+      <div class="flex items-center">
+        <div class="text-purple-500 h-10 w-10 mr-3">
+          <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path
+              d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"
+              fill="currentColor"
+            ></path>
+          </svg>
+        </div>
+        <h2 class="text-2xl font-bold text-white">Solana AI</h2>
+      </div>
+
+      <!-- Navigation -->
+      <nav class="hidden md:flex items-center space-x-8">
+        <a href="#" class="text-gray-300 hover:text-purple-400 transition">Overview</a>
+        <a href="#" class="text-gray-300 hover:text-purple-400 transition">Documentation</a>
+        <a href="#" class="text-gray-300 hover:text-purple-400 transition">API Reference</a>
+        <a href="#" class="text-gray-300 hover:text-purple-400 transition">Examples</a>
+      </nav>
+
+      <!-- Action Buttons and User Profile -->
+      <div class="flex items-center space-x-4">
+        <!-- Icon Buttons -->
+        <button class="text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-800 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+            <path
+              d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
+            ></path>
+          </svg>
+        </button>
+        <button class="text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-800 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+            <path
+              d="M218.83,103.77l-80-75.48a1.14,1.14,0,0,1-.11-.11,16,16,0,0,0-21.53,0l-.11.11L37.17,103.77A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V160h32v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l.11-.1L128,40l79.9,75.43.11.1Z"
+            ></path>
+          </svg>
+        </button>
+        <button class="text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-800 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+            <path
+              d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128ZM84,116a12,12,0,1,0,12,12A12,12,0,0,0,84,116Zm88,0a12,12,0,1,0,12,12A12,12,0,0,0,172,116Zm60,12A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"
+            ></path>
+          </svg>
+        </button>
+        <button class="text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-800 transition">
+          <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
+            <path
+              d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"
+            ></path>
+          </svg>
+        </button>
+        
+        <!-- User Profile -->
+        <div class="h-10 w-10 rounded-full bg-cover bg-center border-2 border-purple-500" style='background-image: url("/api/placeholder/100/100")'></div>
+        
+        <!-- Mobile Menu Button (visible on small screens) -->
+        <button class="md:hidden text-gray-300 hover:text-white p-2 rounded-full hover:bg-gray-800">
+          <svg xmlns="http://www.w3.org/2000/svg" width="24px" height="24px" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+          </svg>
+        </button>
+      </div>
+    </div>
+  </div>
+</header>
+  <!-- Hero Section -->
+<section id="hero" class="pt-32 pb-20 bg-gray-900 relative overflow-hidden">
+  <!-- Background gradient overlay -->
+  <div class="absolute inset-0 bg-gradient-to-br from-gray-900 via-gray-800/90 to-purple-900/30"></div>
+  
+  <!-- Animated background elements -->
+  <div class="absolute inset-0 overflow-hidden">
+    <!-- Glowing orbs -->
+    <div class="absolute top-1/4 right-1/4 h-64 w-64 rounded-full bg-purple-600/20 filter blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-1/3 left-1/3 h-96 w-96 rounded-full bg-blue-600/10 filter blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    
+    <!-- Grid pattern overlay -->
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiMyMDIwMjAiIGZpbGwtb3BhY2l0eT0iMC4zIj48cGF0aCBkPSJNMzYgMzRoLTJ2LTRoMnY0em0wLTZoLTJ2LTRoMnY0em0wLTZoLTJ2LTRoMnY0em0wLTZoLTJWMTBoMnY0em0wLTZoLTJWNGgydjR6bTYgMjRoLTJ2LTRoMnY0em0wLTZoLTJ2LTRoMnY0em0wLTZoLTJ2LTRoMnY0em0wLTZoLTJWMTBoMnY0em0wLTZoLTJWNGgydjR6bTYgMjRoLTJ2LTRoMnY0em0wLTZoLTJ2LTRoMnY0em0wLTZoLTJ2LTRoMnY0em0wLTZoLTJWMTBoMnY0em0wLTZoLTJWNGgydjR6Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
+  </div>
+  
+  <div class="container mx-auto px-4 relative z-10">
+    <div class="flex flex-col md:flex-row items-center">
+      <!-- Hero Content -->
+      <div class="md:w-1/2 text-center md:text-left md:pr-8">
+        <h1 class="text-5xl md:text-6xl font-bold text-white mb-6 leading-tight">
+          AI-Powered <span class="text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-blue-500">Assistant</span> for the Solana Ecosystem
+        </h1>
+        
+        <p class="text-xl text-gray-300 mb-8 max-w-xl mx-auto md:mx-0">
+          Supercharge your Solana development with advanced AI tools for smart contracts, trading, and data analytics.
+        </p>
+        
+        <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4 justify-center md:justify-start">
+          <button class="btn-primary px-8 py-3 text-lg font-medium">
+            Try Solana AI
+          </button>
+          
+          <button id="connectWalletBtn" class="px-8 py-3 text-lg font-medium bg-gray-800 text-white rounded-lg border border-purple-500/30 hover:bg-gray-700 transition flex items-center justify-center group">
+            <span>Connect Wallet</span>
+            <div class="ml-3 h-3 w-3 rounded-full bg-red-500 group-hover:bg-yellow-500 wallet-status-indicator"></div>
+          </button>
+        </div>
+      </div>
+      
+      <!-- Hero Image -->
+      <div class="md:w-1/2 mt-12 md:mt-0">
+        <div class="relative">
+          <!-- Main Image -->
+          <div class="relative z-10 rounded-lg overflow-hidden shadow-2xl border border-purple-500/20">
+            <img src="/api/placeholder/600/400" alt="Solana AI Interface" class="w-full" />
+            
+            <!-- Glowing highlight -->
+            <div class="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-transparent"></div>
+          </div>
+          
+          <!-- Floating Elements -->
+          <div class="absolute -top-6 -right-6 bg-blue-600/80 rounded-lg p-4 shadow-lg code-element animate-float">
+            <pre class="text-xs text-white">{new SolanaAI.predict()}</pre>
+          </div>
+          
+          <div class="absolute -bottom-8 -left-4 bg-purple-600/80 rounded-lg p-4 shadow-lg code-element animate-float-delayed">
+            <pre class="text-xs text-white">{wallet.connect()}</pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+  <!-- Features Section -->
+<section id="features" class="py-20 bg-gradient-to-b from-gray-900 to-gray-800">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-white mb-4">Powerful AI Features</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">Leverage the speed and efficiency of Solana with our cutting-edge AI tools designed for the next generation of decentralized applications.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <!-- Feature Card 1 -->
+      <div class="feature-card">
+        <div class="card-inner">
+          <div class="card-front bg-gray-800 rounded-xl p-8 shadow-lg border border-purple-500/30 h-full">
+            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-purple-600 mb-6 mx-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 3v2m6-2v2M9 19v2m6-2v2M5 9H3m2 6H3m18-6h-2m2 6h-2M7 19h10a2 2 0 002-2V7a2 2 0 00-2-2H7a2 2 0 00-2 2v10a2 2 0 002 2z" />
               </svg>
             </div>
-            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Solana AI</h2>
+            <h3 class="text-2xl font-bold text-white mb-4 text-center">Smart Contract AI</h3>
+            <p class="text-gray-300 text-center">Automated smart contract generation and auditing powered by advanced machine learning.</p>
           </div>
-          <div class="flex flex-1 justify-end gap-8">
-            <div class="flex items-center gap-9">
-              <a class="text-white text-sm font-medium leading-normal" href="#">Overview</a>
-              <a class="text-white text-sm font-medium leading-normal" href="#">Documentation</a>
-              <a class="text-white text-sm font-medium leading-normal" href="#">API reference</a>
-              <a class="text-white text-sm font-medium leading-normal" href="#">Examples</a>
-            </div>
-            <div class="flex gap-2">
-              <button
-                class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-[#283339] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
-              >
-                <div class="text-white" data-icon="MagnifyingGlass" data-size="20px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M229.66,218.34l-50.07-50.06a88.11,88.11,0,1,0-11.31,11.31l50.06,50.07a8,8,0,0,0,11.32-11.32ZM40,112a72,72,0,1,1,72,72A72.08,72.08,0,0,1,40,112Z"
-                    ></path>
-                  </svg>
-                </div>
-              </button>
-              <button
-                class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-[#283339] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
-              >
-                <div class="text-white" data-icon="House" data-size="20px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M218.83,103.77l-80-75.48a1.14,1.14,0,0,1-.11-.11,16,16,0,0,0-21.53,0l-.11.11L37.17,103.77A16,16,0,0,0,32,115.55V208a16,16,0,0,0,16,16H96a16,16,0,0,0,16-16V160h32v48a16,16,0,0,0,16,16h48a16,16,0,0,0,16-16V115.55A16,16,0,0,0,218.83,103.77ZM208,208H160V160a16,16,0,0,0-16-16H112a16,16,0,0,0-16,16v48H48V115.55l.11-.1L128,40l79.9,75.43.11.1Z"
-                    ></path>
-                  </svg>
-                </div>
-              </button>
-              <button
-                class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-[#283339] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
-              >
-                <div class="text-white" data-icon="ChatCircleDots" data-size="20px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M140,128a12,12,0,1,1-12-12A12,12,0,0,1,140,128ZM84,116a12,12,0,1,0,12,12A12,12,0,0,0,84,116Zm88,0a12,12,0,1,0,12,12A12,12,0,0,0,172,116Zm60,12A104,104,0,0,1,79.12,219.82L45.07,231.17a16,16,0,0,1-20.24-20.24l11.35-34.05A104,104,0,1,1,232,128Zm-16,0A88,88,0,1,0,51.81,172.06a8,8,0,0,1,.66,6.54L40,216,77.4,203.53a7.85,7.85,0,0,1,2.53-.42,8,8,0,0,1,4,1.08A88,88,0,0,0,216,128Z"
-                    ></path>
-                  </svg>
-                </div>
-              </button>
-              <button
-                class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 bg-[#283339] text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0 px-2.5"
-              >
-                <div class="text-white" data-icon="Question" data-size="20px" data-weight="regular">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20px" height="20px" fill="currentColor" viewBox="0 0 256 256">
-                    <path
-                      d="M140,180a12,12,0,1,1-12-12A12,12,0,0,1,140,180ZM128,72c-22.06,0-40,16.15-40,36v4a8,8,0,0,0,16,0v-4c0-11,10.77-20,24-20s24,9,24,20-10.77,20-24,20a8,8,0,0,0-8,8v8a8,8,0,0,0,16,0v-.72c18.24-3.35,32-17.9,32-35.28C168,88.15,150.06,72,128,72Zm104,56A104,104,0,1,1,128,24,104.11,104.11,0,0,1,232,128Zm-16,0a88,88,0,1,0-88,88A88.1,88.1,0,0,0,216,128Z"
-                    ></path>
-                  </svg>
-                </div>
-              </button>
-            </div>
-            <div
-              class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10"
-              style='background-image: url("https://cdn.usegalileo.ai/sdxl10/01dc889d-ee23-4c4c-b4c2-ec5d5c5b3798.png");'
-            ></div>
+          <div class="card-back bg-purple-900 rounded-xl p-8 shadow-lg border border-purple-500/30 h-full">
+            <h3 class="text-2xl font-bold text-white mb-4 text-center">Smart Contract AI</h3>
+            <ul class="text-gray-200 space-y-2 mb-6">
+              <li>• Generates secure smart contracts from natural language</li>
+              <li>• Audits existing contracts for vulnerabilities</li>
+              <li>• Optimizes gas usage automatically</li>
+              <li>• Supports multiple contract standards</li>
+            </ul>
+            <a href="#" class="block text-center text-purple-300 hover:text-white transition">Learn more →</a>
           </div>
-        </header>
-        <div class="px-40 flex flex-1 justify-center py-5">
-          <div class="layout-content-container flex flex-col max-w-[960px] flex-1">
-            <div class="@container">
-              <div class="@[480px]:p-4">
-                <div
-                  class="flex min-h-[480px] flex-col gap-6 bg-cover bg-center bg-no-repeat @[480px]:gap-8 @[480px]:rounded-xl items-start justify-end px-4 pb-10 @[480px]:px-10"
-                  style='background-image: linear-gradient(rgba(0, 0, 0, 0.1) 0%, rgba(0, 0, 0, 0.4) 100%), url("https://cdn.usegalileo.ai/sdxl10/c86018c1-ed84-49bc-929b-d7196e56f8ec.png");'
-                >
-                  <h1
-                    class="text-white text-4xl font-black leading-tight tracking-[-0.033em] @[480px]:text-5xl @[480px]:font-black @[480px]:leading-tight @[480px]:tracking-[-0.033em] text-center"
-                  >
-                    AI-Powered Assistant for the Solana Ecosystem
-                  </h1>
-                  <div class="flex-wrap gap-3 flex">
-                    <button
-                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#2badee] text-[#111618] text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                    >
-                      <span class="truncate">Try Solana AI</span>
-                    </button>
-                    <button
-                      class="flex min-w-[84px] max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-xl h-10 px-4 @[480px]:h-12 @[480px]:px-5 bg-[#283339] text-white text-sm font-bold leading-normal tracking-[0.015em] @[480px]:text-base @[480px]:font-bold @[480px]:leading-normal @[480px]:tracking-[0.015em]"
-                    >
-                      <span class="truncate">Connect Wallet</span>
-                    </button>
-                  </div>
-                </div>
+        </div>
+      </div>
+      
+      <!-- Feature Card 2 -->
+      <div class="feature-card">
+        <div class="card-inner">
+          <div class="card-front bg-gray-800 rounded-xl p-8 shadow-lg border border-blue-500/30 h-full">
+            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-blue-600 mb-6 mx-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4 text-center">Trading Bot Framework</h3>
+            <p class="text-gray-300 text-center">Create customized trading strategies with our no-code AI assistant.</p>
+          </div>
+          <div class="card-back bg-blue-900 rounded-xl p-8 shadow-lg border border-blue-500/30 h-full">
+            <h3 class="text-2xl font-bold text-white mb-4 text-center">Trading Bot Framework</h3>
+            <ul class="text-gray-200 space-y-2 mb-6">
+              <li>• No-code strategy builder with drag-and-drop</li>
+              <li>• Backtesting with historical data</li>
+              <li>• AI-driven market analysis</li>
+              <li>• Automated execution on Solana</li>
+            </ul>
+            <a href="#" class="block text-center text-blue-300 hover:text-white transition">Learn more →</a>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Feature Card 3 -->
+      <div class="feature-card">
+        <div class="card-inner">
+          <div class="card-front bg-gray-800 rounded-xl p-8 shadow-lg border border-green-500/30 h-full">
+            <div class="flex items-center justify-center h-16 w-16 rounded-full bg-green-600 mb-6 mx-auto">
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+              </svg>
+            </div>
+            <h3 class="text-2xl font-bold text-white mb-4 text-center">Predictive Analytics</h3>
+            <p class="text-gray-300 text-center">On-chain data analysis and forecasting using sophisticated AI models.</p>
+          </div>
+          <div class="card-back bg-green-900 rounded-xl p-8 shadow-lg border border-green-500/30 h-full">
+            <h3 class="text-2xl font-bold text-white mb-4 text-center">Predictive Analytics</h3>
+            <ul class="text-gray-200 space-y-2 mb-6">
+              <li>• Real-time market trend analysis</li>
+              <li>• Token price forecasting</li>
+              <li>• Sentiment analysis from social media</li>
+              <li>• Custom alert system for market changes</li>
+            </ul>
+            <a href="#" class="block text-center text-green-300 hover:text-white transition">Learn more →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- About Section -->
+<section id="about" class="py-20 bg-gray-800">
+  <div class="container mx-auto px-4">
+    <div class="flex flex-col lg:flex-row items-center gap-12">
+      <!-- Left side: Image with animation -->
+      <div class="lg:w-1/2 relative">
+        <div class="relative z-10">
+          <img src="/api/placeholder/600/450" alt="Solana AI Team" class="rounded-lg shadow-2xl about-image" />
+        </div>
+        <!-- Decorative elements -->
+        <div class="absolute -top-6 -left-6 w-64 h-64 bg-purple-600 rounded-full filter blur-3xl opacity-20 animate-pulse"></div>
+        <div class="absolute -bottom-6 -right-6 w-64 h-64 bg-blue-600 rounded-full filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
+        <!-- Code snippets floating around image -->
+        <div class="code-snippet top-4 -right-16 animate-float">
+          <pre class="bg-gray-900 text-green-400 p-3 rounded-lg text-xs shadow-lg">{solana.connect()}</pre>
+        </div>
+        <div class="code-snippet -bottom-8 left-10 animate-float-delayed">
+          <pre class="bg-gray-900 text-blue-400 p-3 rounded-lg text-xs shadow-lg">new AI.Predictor()</pre>
+        </div>
+      </div>
+      
+      <!-- Right side: Content -->
+      <div class="lg:w-1/2">
+        <div class="text-center lg:text-left">
+          <h5 class="text-purple-400 font-semibold mb-2">About Us</h5>
+          <h2 class="text-4xl font-bold text-white mb-6">Pioneering AI on Solana</h2>
+          <div class="h-1 w-20 bg-gradient-to-r from-purple-600 to-blue-600 mb-8 mx-auto lg:mx-0"></div>
+          
+          <p class="text-gray-300 mb-6">
+            Founded in 2023, SolanaAI is at the forefront of bringing artificial intelligence capabilities to the Solana blockchain. Our team of blockchain developers and AI researchers are building tools that leverage Solana's speed and efficiency to create next-generation decentralized applications.
+          </p>
+          
+          <p class="text-gray-300 mb-8">
+            We believe in a future where decentralized AI can transform finance, governance, and digital interaction. By building on Solana, we're able to offer AI solutions that are not only powerful but also accessible to developers worldwide.
+          </p>
+          
+          <div class="grid grid-cols-2 gap-6 mb-8">
+            <div class="text-center p-4 bg-gray-900 rounded-lg">
+              <h3 class="text-3xl font-bold text-purple-400 mb-2">15+</h3>
+              <p class="text-gray-400">Team Members</p>
+            </div>
+            <div class="text-center p-4 bg-gray-900 rounded-lg">
+              <h3 class="text-3xl font-bold text-blue-400 mb-2">10K+</h3>
+              <p class="text-gray-400">Users</p>
+            </div>
+            <div class="text-center p-4 bg-gray-900 rounded-lg">
+              <h3 class="text-3xl font-bold text-green-400 mb-2">3M+</h3>
+              <p class="text-gray-400">Transactions</p>
+            </div>
+            <div class="text-center p-4 bg-gray-900 rounded-lg">
+              <h3 class="text-3xl font-bold text-yellow-400 mb-2">24/7</h3>
+              <p class="text-gray-400">Support</p>
+            </div>
+          </div>
+          
+          <button class="btn-primary">Meet Our Team</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+<!-- Contact Section with Map -->
+<section id="contact" class="py-20 bg-gray-900">
+  <div class="container mx-auto px-4">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-white mb-4">Get In Touch</h2>
+      <p class="text-xl text-gray-300 max-w-3xl mx-auto">Have questions about our AI tools or want to schedule a demo? Reach out to our team.</p>
+    </div>
+    
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+      <!-- Contact Form -->
+      <div class="bg-gray-800 p-8 rounded-xl shadow-lg border border-purple-500/20">
+        <h3 class="text-2xl font-bold text-white mb-6">Send us a message</h3>
+        <form id="contactForm" class="space-y-6">
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+            <div>
+              <label for="name" class="block text-gray-300 mb-2">Your Name</label>
+              <input type="text" id="name" name="name" placeholder="John Doe" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white">
+            </div>
+            <div>
+              <label for="email" class="block text-gray-300 mb-2">Your Email</label>
+              <input type="email" id="email" name="email" placeholder="john@example.com" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white">
+            </div>
+          </div>
+          
+          <div>
+            <label for="subject" class="block text-gray-300 mb-2">Subject</label>
+            <input type="text" id="subject" name="subject" placeholder="How can we help you?" class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white">
+          </div>
+          
+          <div>
+            <label for="message" class="block text-gray-300 mb-2">Message</label>
+            <textarea id="message" name="message" rows="5" placeholder="Your message here..." class="w-full px-4 py-3 bg-gray-700 border border-gray-600 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white resize-none"></textarea>
+          </div>
+          
+          <div>
+            <button type="submit" class="btn-primary w-full py-4 flex items-center justify-center">
+              <span>Send Message</span>
+              <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 ml-2" viewBox="0 0 20 20" fill="currentColor">
+                <path fill-rule="evenodd" d="M10.293 3.293a1 1 0 011.414 0l6 6a1 1 0 010 1.414l-6 6a1 1 0 01-1.414-1.414L14.586 11H3a1 1 0 110-2h11.586l-4.293-4.293a1 1 0 010-1.414z" clip-rule="evenodd" />
+              </svg>
+            </button>
+          </div>
+        </form>
+      </div>
+      
+      <!-- Map and Contact Info -->
+      <div class="bg-gray-800 rounded-xl shadow-lg overflow-hidden border border-blue-500/20 flex flex-col">
+        <!-- Embedded Map (placeholder) -->
+        <div class="h-64 bg-gray-700 contact-map">
+          <!-- This would be replaced with an actual map integration -->
+          <div class="h-full w-full relative overflow-hidden">
+            <img src="/api/placeholder/600/300" alt="Map" class="w-full h-full object-cover opacity-60" />
+            <div class="absolute inset-0 flex items-center justify-center">
+              <div class="bg-blue-600 h-8 w-8 rounded-full animate-ping"></div>
+              <div class="absolute bg-blue-600 h-4 w-4 rounded-full"></div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- Contact Information -->
+        <div class="p-8 flex-grow">
+          <h3 class="text-2xl font-bold text-white mb-6">Contact Information</h3>
+          <div class="space-y-4">
+            <div class="flex items-start">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-blue-600 flex items-center justify-center mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-white font-medium">Office Location</h4>
+                <p class="text-gray-300 mt-1">123 Blockchain Boulevard, San Francisco, CA 94103</p>
               </div>
             </div>
-            <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Get started in seconds</h2>
-            <div class="flex overflow-y-auto [-ms-scrollbar-style:none] [scrollbar-width:none] [&amp;::-webkit-scrollbar]:hidden">
-              <div class="flex items-stretch p-4 gap-8">
-                <div class="flex h-full flex-1 flex-col gap-4 text-center rounded-lg min-w-32 pt-4">
-                  <div
-                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full flex flex-col self-center w-full"
-                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/3c712713-58d7-43c1-b666-6c32c0a0efe8.png");'
-                  ></div>
-                  <div>
-                    <p class="text-white text-base font-medium leading-normal">Solana AI</p>
-                    <p class="text-[#9db0b9] text-sm font-normal leading-normal">AI-powered assistant for the Solana ecosystem</p>
-                  </div>
-                </div>
-                <div class="flex h-full flex-1 flex-col gap-4 text-center rounded-lg min-w-32 pt-4">
-                  <div
-                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full flex flex-col self-center w-full"
-                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/ab934187-b1e5-44d7-aec1-71e9da7f45c5.png");'
-                  ></div>
-                  <div>
-                    <p class="text-white text-base font-medium leading-normal">NFT Vision</p>
-                    <p class="text-[#9db0b9] text-sm font-normal leading-normal">AI-powered assistant for NFT research and analysis</p>
-                  </div>
-                </div>
-                <div class="flex h-full flex-1 flex-col gap-4 text-center rounded-lg min-w-32 pt-4">
-                  <div
-                    class="bg-center bg-no-repeat aspect-square bg-cover rounded-full flex flex-col self-center w-full"
-                    style='background-image: url("https://cdn.usegalileo.ai/sdxl10/6d44dab7-1d20-4986-b875-01fb0fc00027.png");'
-                  ></div>
-                  <div>
-                    <p class="text-white text-base font-medium leading-normal">DeFi Genius</p>
-                    <p class="text-[#9db0b9] text-sm font-normal leading-normal">AI-powered assistant for DeFi research and analysis</p>
-                  </div>
-                </div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-purple-600 flex items-center justify-center mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                </svg>
+              </div>
+              <div>
+                <h4 class="text-white font-medium">Email Us</h4>
+                <p class="text-gray-300 mt-1">contact@solanaai.com</p>
               </div>
             </div>
-            <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Powered by the latest AI tech</h2>
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
-              <div class="flex flex-col gap-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/0a6cf360-109a-4a26-8450-60b6e85bfced.png");'
-                ></div>
+            
+            <div class="flex items-start">
+              <div class="flex-shrink-0 h-10 w-10 rounded-full bg-green-600 flex items-center justify-center mr-4">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                </svg>
               </div>
-              <div class="flex flex-col gap-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/97b57635-ca7d-4221-b8e3-068a959ef45c.png");'
-                ></div>
-              </div>
-              <div class="flex flex-col gap-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/0315467c-08e2-4cf3-b5e3-2971059af64f.png");'
-                ></div>
-              </div>
-              <div class="flex flex-col gap-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/a1cb54ce-2c20-4f7a-8cde-063b82d066c5.png");'
-                ></div>
-              </div>
-              <div class="flex flex-col gap-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/55d8d20b-8fd4-468a-9bce-968c8613223a.png");'
-                ></div>
-              </div>
-              <div class="flex flex-col gap-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-square bg-cover rounded-xl"
-                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/faa41432-569a-43e8-8a13-cae00d5da0ab.png");'
-                ></div>
+              <div>
+                <h4 class="text-white font-medium">Call Us</h4>
+                <p class="text-gray-300 mt-1">+1 (555) 123-4567</p>
               </div>
             </div>
-            <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Live data integrations</h2>
-            <div class="grid grid-cols-[repeat(auto-fit,minmax(158px,1fr))] gap-3 p-4">
-              <div class="flex flex-col gap-3 pb-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/53d730b3-fabf-4460-8611-e5fee5469719.png");'
-                ></div>
-                <p class="text-white text-base font-medium leading-normal">NFT Vision</p>
-              </div>
-              <div class="flex flex-col gap-3 pb-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/13dbc5bf-04f0-47ae-9e7e-7f48326f822f.png");'
-                ></div>
-                <p class="text-white text-base font-medium leading-normal">DeFi Genius</p>
-              </div>
-              <div class="flex flex-col gap-3 pb-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/80cea102-657c-4d8d-ade1-51fd17e15ddf.png");'
-                ></div>
-                <p class="text-white text-base font-medium leading-normal">Solana Stats</p>
-              </div>
-              <div class="flex flex-col gap-3 pb-3">
-                <div
-                  class="w-full bg-center bg-no-repeat aspect-video bg-cover rounded-xl"
-                  style='background-image: url("https://cdn.usegalileo.ai/sdxl10/17c92ce9-4f6c-4fa4-987e-dbf7ca43022c.png");'
-                ></div>
-                <p class="text-white text-base font-medium leading-normal">Solana Partners</p>
-              </div>
-            </div>
-            <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Trusted by the community</h2>
-            <div class="flex flex-wrap gap-3 px-4 py-3">
-              <div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg border border-[#3b4b54] p-3 items-center text-center">
-                <p class="text-white tracking-light text-2xl font-bold leading-tight">5,000+</p>
-                <div class="flex items-center gap-2"><p class="text-[#9db0b9] text-sm font-normal leading-normal">Daily active users</p></div>
-              </div>
-              <div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg border border-[#3b4b54] p-3 items-center text-center">
-                <p class="text-white tracking-light text-2xl font-bold leading-tight">1,000+</p>
-                <div class="flex items-center gap-2"><p class="text-[#9db0b9] text-sm font-normal leading-normal">Telegram members</p></div>
-              </div>
-              <div class="flex min-w-[111px] flex-1 basis-[fit-content] flex-col gap-2 rounded-lg border border-[#3b4b54] p-3 items-center text-center">
-                <p class="text-white tracking-light text-2xl font-bold leading-tight">100+</p>
-                <div class="flex items-center gap-2"><p class="text-[#9db0b9] text-sm font-normal leading-normal">Discord members</p></div>
-              </div>
-            </div>
-            <h2 class="text-white text-[22px] font-bold leading-tight tracking-[-0.015em] px-4 pb-3 pt-5">Testimonials</h2>
-            <div class="flex gap-3 p-3 flex-wrap pr-4">
-              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#283339] pl-4 pr-4">
-                <p class="text-white text-sm font-medium leading-normal">Incredible</p>
-              </div>
-              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#283339] pl-4 pr-4">
-                <p class="text-white text-sm font-medium leading-normal">A game changer</p>
-              </div>
-              <div class="flex h-8 shrink-0 items-center justify-center gap-x-2 rounded-xl bg-[#283339] pl-4 pr-4">
-                <p class="text-white text-sm font-medium leading-normal">So helpful</p>
-              </div>
+          </div>
+          
+          <!-- Social Media -->
+          <div class="mt-8">
+            <h4 class="text-white font-medium mb-4">Follow Us</h4>
+            <div class="flex space-x-4">
+              <a href="#" class="h-10 w-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-blue-600 transition-colors">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+                </svg>
+              </a>
+              <a href="#" class="h-10 w-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-blue-400 transition-colors">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+                </svg>
+              </a>
+              <a href="#" class="h-10 w-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-purple-600 transition-colors">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M12.315 2c2.43 0 2.784.013 3.808.06 1.064.049 1.791.218 2.427.465a4.902 4.902 0 011.772 1.153 4.902 4.902 0 011.153 1.772c.247.636.416 1.363.465 2.427.048 1.067.06 1.407.06 4.123v.08c0 2.643-.012 2.987-.06 4.043-.049 1.064-.218 1.791-.465 2.427a4.902 4.902 0 01-1.153 1.772 4.902 4.902 0 01-1.772 1.153c-.636.247-1.363.416-2.427.465-1.067.048-1.407.06-4.123.06h-.08c-2.643 0-2.987-.012-4.043-.06-1.064-.049-1.791-.218-2.427-.465a4.902 4.902 0 01-1.772-1.153 4.902 4.902 0 01-1.153-1.772c-.247-.636-.416-1.363-.465-2.427-.047-1.024-.06-1.379-.06-3.808v-.63c0-2.43.013-2.784.06-3.808.049-1.064.218-1.791.465-2.427a4.902 4.902 0 011.153-1.772A4.902 4.902 0 015.45 2.525c.636-.247 1.363-.416 2.427-.465C8.901 2.013 9.256 2 11.685 2h.63zm-.081 1.802h-.468c-2.456 0-2.784.011-3.807.058-.975.045-1.504.207-1.857.344-.467.182-.8.398-1.15.748-.35.35-.566.683-.748 1.15-.137.353-.3.882-.344 1.857-.047 1.023-.058 1.351-.058 3.807v.468c0 2.456.011 2.784.058 3.807.045.975.207 1.504.344 1.857.182.466.399.8.748 1.15.35.35.683.566 1.15.748.353.137.882.3 1.857.344 1.054.048 1.37.058 4.041.058h.08c2.597 0 2.917-.01 3.96-.058.976-.045 1.505-.207 1.858-.344.466-.182.8-.398 1.15-.748.35-.35.566-.683.748-1.15.137-.353.3-.882.344-1.857.048-1.055.058-1.37.058-4.041v-.08c0-2.597-.01-2.917-.058-3.96-.045-.976-.207-1.505-.344-1.858a3.097 3.097 0 00-.748-1.15 3.098 3.098 0 00-1.15-.748c-.353-.137-.882-.3-1.857-.344-1.023-.047-1.351-.058-3.807-.058zM12 6.865a5.135 5.135 0 110 10.27 5.135 5.135 0 010-10.27zm0 1.802a3.333 3.333 0 100 6.666 3.333 3.333 0 000-6.666zm5.338-3.205a1.2 1.2 0 110 2.4 1.2 1.2 0 010-2.4z" clip-rule="evenodd"></path>
+                </svg>
+              </a>
+              <a href="#" class="h-10 w-10 rounded-full bg-gray-700 flex items-center justify-center text-white hover:bg-black transition-colors">
+                <svg class="h-5 w-5" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+                  <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.477 2 12c0 5.523 4.477 10 10 10s10-4.477 10-10c0-5.523-4.477-10-10-10zm-1.5 16.5v-11l8.5 5.5-8.5 5.5z" clip-rule="evenodd"></path>
+                </svg>
+              </a>
             </div>
           </div>
         </div>
       </div>
     </div>
-  </body>
+  </div>
+</section>
+<!-- Footer Section -->
+<!-- Footer Section -->
+<footer class="bg-gray-900 pt-20 pb-10 border-t border-gray-800">
+  <div class="container mx-auto px-4">
+    <!-- Main Footer Content -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 mb-16">
+      <!-- Company Info -->
+      <div class="lg:col-span-2">
+        <div class="flex items-center mb-6">
+          <div class="text-purple-500 h-10 w-10 mr-3">
+            <svg viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path
+                d="M4 42.4379C4 42.4379 14.0962 36.0744 24 41.1692C35.0664 46.8624 44 42.2078 44 42.2078L44 7.01134C44 7.01134 35.068 11.6577 24.0031 5.96913C14.0971 0.876274 4 7.27094 4 7.27094L4 42.4379Z"
+                fill="currentColor"
+              ></path>
+            </svg>
+          </div>
+          <h2 class="text-2xl font-bold text-white">Solana AI</h2>
+        </div>
+        <p class="text-gray-400 mb-6">
+          Empowering developers and users with AI-powered tools for the Solana ecosystem. Build smarter, trade better, and analyze deeper.
+        </p>
+        <div class="flex space-x-4">
+          <a href="#" class="text-gray-400 hover:text-white">
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M22 12c0-5.523-4.477-10-10-10S2 6.477 2 12c0 4.991 3.657 9.128 8.438 9.878v-6.987h-2.54V12h2.54V9.797c0-2.506 1.492-3.89 3.777-3.89 1.094 0 2.238.195 2.238.195v2.46h-1.26c-1.243 0-1.63.771-1.63 1.562V12h2.773l-.443 2.89h-2.33v6.988C18.343 21.128 22 16.991 22 12z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8.29 20.251c7.547 0 11.675-6.253 11.675-11.675 0-.178 0-.355-.012-.53A8.348 8.348 0 0022 5.92a8.19 8.19 0 01-2.357.646 4.118 4.118 0 001.804-2.27 8.224 8.224 0 01-2.605.996 4.107 4.107 0 00-6.993 3.743 11.65 11.65 0 01-8.457-4.287 4.106 4.106 0 001.27 5.477A4.072 4.072 0 012.8 9.713v.052a4.105 4.105 0 003.292 4.022 4.095 4.095 0 01-1.853.07 4.108 4.108 0 003.834 2.85A8.233 8.233 0 012 18.407a11.616 11.616 0 006.29 1.84"></path>
+            </svg>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z" clip-rule="evenodd"></path>
+            </svg>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <svg class="h-6 w-6" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true">
+              <path fill-rule="evenodd" d="M19.812 5.418c.861.23 1.538.907 1.768 1.768C21.998 8.746 22 12 22 12s0 3.255-.418 4.814a2.504 2.504 0 0 1-1.768 1.768c-1.56.419-7.814.419-7.814.419s-6.255 0-7.814-.419a2.505 2.505 0 0 1-1.768-1.768C2 15.255 2 12 2 12s0-3.255.417-4.814a2.507 2.507 0 0 1 1.768-1.768C5.744 5 11.998 5 11.998 5s6.255 0 7.814.418ZM15.194 12 10 15V9l5.194 3Z" clip-rule="evenodd" />
+            </svg>
+          </a>
+        </div>
+      </div>
+      
+      <!-- Quick Links -->
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-6">Quick Links</h3>
+        <ul class="space-y-4">
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Home</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Features</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">About Us</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Contact</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Pricing</a></li>
+        </ul>
+      </div>
+      
+      <!-- Resources -->
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-6">Resources</h3>
+        <ul class="space-y-4">
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Documentation</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">API Reference</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Developer Guide</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Tutorials</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Blog</a></li>
+        </ul>
+      </div>
+      
+      <!-- Legal -->
+      <div>
+        <h3 class="text-lg font-semibold text-white mb-6">Legal</h3>
+        <ul class="space-y-4">
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Terms of Service</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Privacy Policy</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Cookie Policy</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Data Processing</a></li>
+          <li><a href="#" class="text-gray-400 hover:text-white transition">Security</a></li>
+        </ul>
+      </div>
+    </div>
+    
+    <!-- Newsletter Subscription -->
+    <div class="border-t border-gray-800 pt-10 pb-8 mb-8">
+      <div class="flex flex-col md:flex-row justify-between items-center">
+        <div class="mb-6 md:mb-0">
+          <h3 class="text-xl font-semibold text-white mb-2">Stay Updated</h3>
+          <p class="text-gray-400">Subscribe to our newsletter for updates and new features.</p>
+        </div>
+        <div class="w-full md:w-auto">
+          <form class="flex flex-col sm:flex-row gap-4">
+            <input type="email" placeholder="Your email address" class="px-4 py-3 bg-gray-800 border border-gray-700 rounded-lg focus:outline-none focus:ring-2 focus:ring-purple-500 text-white w-full sm:w-64">
+            <button type="submit" class="btn-primary px-6 py-3">Subscribe</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    
+    <!-- Copyright and Bottom Links -->
+    <div class="border-t border-gray-800 pt-8 flex flex-col md:flex-row justify-between items-center">
+      <p class="text-gray-500 mb-4 md:mb-0">&copy; 2025 Solana AI. All rights reserved.</p>
+      <div class="flex space-x-6">
+        <a href="#" class="text-gray-500 hover:text-gray-300 transition">Careers</a>
+        <a href="#" class="text-gray-500 hover:text-gray-300 transition">Support</a>
+        <a href="#" class="text-gray-500 hover:text-gray-300 transition">Accessibility</a>
+      </div>
+    </div>
+  </div>
+</footer>
+<!-- Scripts -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+<script src="page.js"></script>
+</body>
+<script src="page.js"></script>
 </html>
