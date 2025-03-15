@@ -1,10 +1,3 @@
-// Main JavaScript for Solana AI Chat Interface
-
-import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
-import { Connection, clusterApiUrl } from '@solana/web3.js';
-import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets';
-
-// DOM Elements
 const sidebar = document.getElementById('sidebar');
 const sidebarToggle = document.getElementById('sidebar-toggle');
 const closeSidebar = document.getElementById('close-sidebar');
@@ -19,6 +12,12 @@ const inputPlaceholder = document.getElementById('user-input');
 const previousChats = document.getElementById('previous-chats');
 const suggestionChips = document.querySelectorAll('.chip');
 const connectWalletBtn = document.getElementById('connect-wallet');
+const networkStatus = document.querySelector('.network-status span:last-child');
+
+// Solana library variables - declared with let
+window.solanaWeb3 = window.solanaWeb3 || null;
+window.solanaWalletAdapterBase = window.solanaWalletAdapterBase || null;
+window.solanaWalletAdapterWallets = window.solanaWalletAdapterWallets || null;
 
 // API URL
 const API_URL = 'https://ai-api-guya.onrender.com/api/chat/';
@@ -28,36 +27,83 @@ let conversations = [];
 let currentConversationId = 0;
 let currentAssistant = 'sidekick'; // Default assistant
 let isTyping = false;
+let walletAddress = null;
 
 // Initialize the app
 function initApp() {
+    // Load libraries first
+    loadSolanaLibraries();
+    
+    // Check if there was a pending wallet connection
+    if (sessionStorage.getItem('walletConnectionPending') === 'true') {
+        // Attempt to re-establish connection with a delay
+        setTimeout(() => connectWallet(), 1500);
+    }
+
     startNewChat();
-    
+
     // Set up event listeners
-    sidebarToggle.addEventListener('click', toggleSidebar);
-    closeSidebar.addEventListener('click', toggleSidebar);
-    sendButton.addEventListener('click', sendMessage);
-    newChatButton.addEventListener('click', startNewChat);
-    connectWalletBtn.addEventListener('click', connectWallet);
-    
-    userInput.addEventListener('keydown', (event) => {
-        if (event.key === 'Enter' && !event.shiftKey) {
-            event.preventDefault();
-            sendMessage();
+    setupEventListeners();
+}
+
+// Load Solana libraries
+// Modified loadSolanaLibraries function
+function loadSolanaLibraries() {
+    try {
+        if (window.solanaWeb3) {
+            // Just use the global variable directly
+            window.solanaWeb3 = window.solanaWeb3;
         }
-        
-        // Auto-resize textarea
-        setTimeout(() => {
-            userInput.style.height = 'auto';
-            userInput.style.height = Math.min(userInput.scrollHeight, 150) + 'px';
-        }, 0);
-    });
-    
+        if (window.solanaWalletAdapterBase) {
+            window.solanaWalletAdapterBase = window.solanaWalletAdapterBase;
+        }
+        if (window.solanaWalletAdapterWallets) {
+            window.solanaWalletAdapterWallets = window.solanaWalletAdapterWallets;
+        }
+    } catch (error) {
+        console.error('Error initializing Solana libraries:', error);
+    }
+}
+
+// Set up all event listeners
+function setupEventListeners() {
+    if (sidebarToggle) {
+        sidebarToggle.addEventListener('click', toggleSidebar);
+    }
+    if (closeSidebar) {
+        closeSidebar.addEventListener('click', toggleSidebar);
+    }
+    if (sendButton) {
+        sendButton.addEventListener('click', sendMessage);
+    }
+    if (newChatButton) {
+        newChatButton.addEventListener('click', startNewChat);
+    }
+    if (connectWalletBtn) {
+        connectWalletBtn.addEventListener('click', connectWallet);
+    }
+
+    // User input handling
+    if (userInput) {
+        userInput.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                sendMessage();
+            }
+
+            // Auto-resize textarea
+            requestAnimationFrame(() => {
+                userInput.style.height = 'auto';
+                userInput.style.height = Math.min(userInput.scrollHeight, 150) + 'px';
+            });
+        });
+    }
+
     // Assistant switching
     assistantBtns.forEach(btn => {
         btn.addEventListener('click', () => switchAssistant(btn.dataset.assistant));
     });
-    
+
     // Suggestion chips
     suggestionChips.forEach(chip => {
         chip.addEventListener('click', () => {
@@ -67,13 +113,22 @@ function initApp() {
     });
 }
 
+// Detect if user is on a mobile device
+function isMobileDevice() {
+    return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+}
+
 // Toggle sidebar visibility
 function toggleSidebar() {
-    sidebar.classList.toggle('closed');
+    if (sidebar) {
+        sidebar.classList.toggle('closed');
+    }
 }
 
 // Switch between AI assistants
 function switchAssistant(assistant) {
+    if (!assistant) return;
+    
     // Update active button
     assistantBtns.forEach(btn => {
         btn.classList.remove('active');
@@ -101,12 +156,16 @@ function switchAssistant(assistant) {
         case 'navigator':
             iconClass = 'fa-palette';
             currentAssistantTitle.textContent = 'NFT AI "Navigator"';
-            inputPlaceholder.placeholder = 'Ask Navigator about NFT collections...';
+            if (inputPlaceholder) {
+                inputPlaceholder.placeholder = 'Ask Navigator about NFT collections...';
+            }
             break;
         case 'builder':
             iconClass = 'fa-code';
             currentAssistantTitle.textContent = 'Dev AI "Builder"';
-            inputPlaceholder.placeholder = 'Ask Builder for coding help...';
+            if (inputPlaceholder) {
+                inputPlaceholder.placeholder = 'Ask Builder for coding help...';
+            }
             break;
     }
     
@@ -138,9 +197,13 @@ function startNewChat() {
     });
     
     // Clear chat UI
-    chatMessages.innerHTML = '';
-    userInput.value = '';
-    userInput.style.height = 'auto';
+    if (chatMessages) {
+        chatMessages.innerHTML = '';
+    }
+    if (userInput) {
+        userInput.value = '';
+        userInput.style.height = 'auto';
+    }
     
     // Add welcome message based on current assistant
     let welcomeMessage = '';
@@ -162,6 +225,8 @@ function startNewChat() {
 
 // Send a message
 function sendMessage() {
+    if (!userInput) return;
+    
     const message = userInput.value.trim();
     if (!message || isTyping) return;
     
@@ -178,6 +243,8 @@ function sendMessage() {
 
 // Add user message to chat
 function addUserMessage(message) {
+    if (!chatMessages) return;
+    
     // Create message element
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('chat-message', 'user');
@@ -208,11 +275,13 @@ function addUserMessage(message) {
             role: 'user',
             content: message
         });
-    };
+    }
 }
 
 // Add bot message to chat
 function addBotMessage(message) {
+    if (!chatMessages) return;
+    
     // Create message element
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('chat-message', 'ai');
@@ -264,6 +333,8 @@ function addBotMessage(message) {
 
 // Add a system message (assistant switch, etc.)
 function addSystemMessage(message) {
+    if (!chatMessages) return;
+    
     const systemDiv = document.createElement('div');
     systemDiv.classList.add('system-message');
     systemDiv.textContent = message;
@@ -291,6 +362,8 @@ function updateTypingMessageWithContent(message) {
 
 // Format message with code highlighting and links
 function formatMessage(message) {
+    if (!message) return '';
+    
     // Convert code blocks
     message = message.replace(/```(\w+)?\n([\s\S]*?)\n```/g, (match, lang, code) => {
         return `<pre><code${lang ? ` class="language-${lang}"` : ''}>${code}</code></pre>`;
@@ -310,6 +383,8 @@ function formatMessage(message) {
 
 // Get AI response from API with the correct payload structure
 async function getAIResponse(userMessage) {
+    if (!userMessage) return;
+    
     // Show typing indicator
     isTyping = true;
     addBotMessage('');  // Will show typing animation due to isTyping flag
@@ -317,7 +392,9 @@ async function getAIResponse(userMessage) {
     try {
         // Prepare the correct request payload structure
         const payload = {
-            user_input: userMessage
+            user_input: userMessage,
+            wallet_address: walletAddress, // Include wallet address if available
+            assistant_type: currentAssistant // Include assistant type
         };
         
         console.log('Sending API request with payload:', payload);
@@ -358,13 +435,18 @@ async function getAIResponse(userMessage) {
         isTyping = false; // Reset typing state
     }
 }
+
 // Function to scroll to the bottom of the chat
 function scrollToBottom() {
-    chatMessages.scrollTop = chatMessages.scrollHeight;
+    if (chatMessages) {
+        chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
 }
 
 // Update previous chats in the sidebar
 function updatePreviousChats() {
+    if (!previousChats) return;
+    
     // Clear previous chats
     previousChats.innerHTML = '';
     
@@ -433,14 +515,13 @@ function updatePreviousChats() {
             deleteConversation(index);
         });
         
-        chatItem.appendChild(deleteBtn);
         previousChats.appendChild(chatItem);
     });
 }
 
 // Load a previous conversation
 function loadConversation(index) {
-    if (!conversations[index]) return;
+    if (!conversations[index] || !chatMessages) return;
     
     currentConversationId = index;
     currentAssistant = conversations[index].assistant;
@@ -485,40 +566,150 @@ function deleteConversation(index) {
     updatePreviousChats();
 }
 
-// Connect wallet function
+// Connect wallet function - improved implementation with mobile support
 async function connectWallet() {
-    // Initialize wallet adapters
-    const network = WalletAdapterNetwork.Mainnet; // Change to 'Devnet' or 'Testnet' if needed
-    const wallets = [
-        new PhantomWalletAdapter(),
-        new SolflareWalletAdapter()
-    ];
-
-    // Create a connection to the Solana blockchain
-    const connection = new Connection(clusterApiUrl(network), 'confirmed');
-
-    // Attempt to connect to the first available wallet
-    for (const wallet of wallets) {
-        try {
-            await wallet.connect();
-            const publicKey = wallet.publicKey.toString();
-
-            // Update the UI to show the connected wallet
-            const walletBtn = document.getElementById('connect-wallet');
-            walletBtn.innerHTML = `<i class="fas fa-wallet"></i><span>${publicKey.slice(0, 4)}...${publicKey.slice(-4)}</span>`;
-            walletBtn.classList.add('connected');
-
-            // Add a system message
-            addSystemMessage(`Wallet connected: ${publicKey}`);
-            return; // Exit after successfully connecting
-        } catch (error) {
-            console.warn(`Failed to connect with ${wallet.name}:`, error);
-        }
+    // Check if already connected
+    if (walletAddress) {
+        addSystemMessage("Wallet already connected: " + shortenAddress(walletAddress));
+        return walletAddress;
     }
+    
+    try {
+        // First load libraries if they aren't loaded yet
+        loadSolanaLibraries();
+        
+        // Check if libraries are loaded
+        if (!window.solanaWeb3 || !window.solanaWalletAdapterWallets) {
+            console.error("Solana libraries not loaded properly");
+            addSystemMessage("Could not connect wallet: Solana libraries not loaded properly");
+            return null;
+        }
+        
+        // Store connection attempt in sessionStorage for mobile redirects
+        if (isMobileDevice()) {
+            sessionStorage.setItem('walletConnectionPending', 'true');
+            addSystemMessage("Opening mobile wallet app. Please approve the connection request.");
+        }
+        
+        // Get required Solana objects
+        //const { Connection, PublicKey } = window.solanaWeb3;
+        
+        // Try to get wallet adapters
+        let PhantomWalletAdapter, SolflareWalletAdapter;
+        
+        if (window.solanaWalletAdapterWallets) {
+            PhantomWalletAdapter = window.solanaWalletAdapterWallets.PhantomWalletAdapter;
+            SolflareWalletAdapter = window.solanaWalletAdapterWallets.SolflareWalletAdapter;
+        }
+        
+        // Try to connect to Phantom first, then Solflare
+        let wallet = null;
+        let walletError = null;
+        
+        // Try Phantom
+        try {
+            if (PhantomWalletAdapter) {
+                wallet = new PhantomWalletAdapter();
+                await wallet.connect();
+            }
+        } catch (err) {
+            console.log("Phantom connection failed, trying Solflare", err);
+            walletError = err;
+        }
+        
+        // If Phantom failed, try Solflare
+        if (!wallet || !wallet.connected) {
+            try {
+                if (SolflareWalletAdapter) {
+                    wallet = new SolflareWalletAdapter();
+                    await wallet.connect();
+                }
+            } catch (err) {
+                console.error("Solflare connection failed", err);
+                walletError = err;
+                
+                if (!wallet) {
+                    throw new Error('No compatible wallet found. Please install Phantom or Solflare.');
+                }
+            }
+        }
+        
+        // Check if we successfully connected
+        if (wallet && wallet.publicKey) {
+            walletAddress = wallet.publicKey.toString();
+            
+            // Update UI to show connected state
+            if (connectWalletBtn) {
+                connectWalletBtn.innerHTML = `<i class="fas fa-wallet"></i><span>${shortenAddress(walletAddress)}</span>`;
+                connectWalletBtn.classList.add('connected');
+            }
+            
+            // Update network status
+            if (networkStatus) {
+                networkStatus.innerHTML = `Connected to Solana Mainnet`;
+            }
+            
+            addSystemMessage(`Wallet connected: ${shortenAddress(walletAddress)}`);
+            
+            // Clear the pending connection flag
+            sessionStorage.removeItem('walletConnectionPending');
+            
+            // Setup disconnect handler
+            wallet.on('disconnect', () => {
+                walletAddress = null;
+                if (connectWalletBtn) {
+                    connectWalletBtn.innerHTML = '<i class="fas fa-wallet"></i><span>Connect Wallet</span>';
+                    connectWalletBtn.classList.remove('connected');
+                }
+                if (networkStatus) {
+                    networkStatus.innerHTML = 'Solana Mainnet';
+                }
+                addSystemMessage('Wallet disconnected');
+            });
+            
+            return walletAddress;
+        } else {
+            throw walletError || new Error('Failed to get wallet public key');
+        }
+    } catch (error) {
+        console.error('Wallet connection error:', error);
+        
+        let errorMessage = error.message || "Unknown error";
+        
+        // Make error messages more user-friendly
+        if (errorMessage.includes("User rejected")) {
+            errorMessage = "Connection request was rejected.";
+        }
+        
+        // Special messaging for mobile users
+        if (isMobileDevice()) {
+            addSystemMessage(`Wallet connection failed. Make sure you have Phantom or Solflare installed on your device.`);
+        } else {
+            addSystemMessage(`Wallet connection failed: ${errorMessage}`);
+        }
+        
+        // Clear the pending connection flag
+        sessionStorage.removeItem('walletConnectionPending');
+        return null;
+    }
+}
 
-    // If no wallet could connect, show an error message
-    addSystemMessage('Failed to connect to any wallet. Please ensure you have a supported wallet installed.');
+// Helper function to shorten wallet address
+function shortenAddress(address) {
+    if (!address) return '';
+    return `${address.slice(0, 4)}...${address.slice(-4)}`;
 }
 
 // Initialize the app when the DOM is fully loaded
 document.addEventListener('DOMContentLoaded', initApp);
+
+// Additional event listener for handling libraries that load after page load
+window.addEventListener('load', () => {
+    // Check if the Solana libraries are loaded
+    loadSolanaLibraries();
+    
+    // Re-initialize connection if it was pending
+    if (sessionStorage.getItem('walletConnectionPending') === 'true') {
+        setTimeout(() => connectWallet(), 1500);
+    }
+});
