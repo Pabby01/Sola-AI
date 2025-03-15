@@ -16,6 +16,9 @@ const previousChats = document.getElementById('previous-chats');
 const suggestionChips = document.querySelectorAll('.chip');
 const connectWalletBtn = document.getElementById('connect-wallet');
 
+// API URL
+const API_URL = 'https://ai-api-guya.onrender.com/api/chat/';
+
 // State Management
 let conversations = [];
 let currentConversationId = 0;
@@ -201,7 +204,7 @@ function addUserMessage(message) {
             role: 'user',
             content: message
         });
-    }
+    };
 }
 
 // Add bot message to chat
@@ -301,46 +304,56 @@ function formatMessage(message) {
     return message;
 }
 
-// Get AI response
-function getAIResponse(userMessage) {
+// Get AI response from API with the correct payload structure
+async function getAIResponse(userMessage) {
     // Show typing indicator
     isTyping = true;
     addBotMessage('');  // Will show typing animation due to isTyping flag
     
-    // Sample responses for the demo
-    const responses = {
-        sidekick: [
-            "Based on current data from Solana DeFi protocols, the highest APY for staking SOL is 7.8% on Marinade Finance. Would you like to see more options or start staking?",
-            "I've analyzed current market rates. For swapping 10 SOL to USDC, Jupiter Aggregator offers the best rate at 1 SOL = 102.45 USDC with minimal slippage. This swap would net you approximately 1,024.5 USDC. Would you like me to prepare this transaction?",
-            "For lending on Solana right now, Solend offers 3.8% APY for SOL deposits, while Kamino Finance shows 4.2%. However, Kamino has slightly higher utilization. Which platform would you like to explore further?",
-            "According to on-chain data, UXD is currently the highest-yielding stablecoin with 5.6% APY through the Kamino CLMM strategy on Orca. Would you like to swap your SOL for UXD?"
-        ],
-        navigator: [
-            "The top trending NFT collections in the past hour on Solana are:\n1. Mad Lads (24% volume increase)\n2. Tensorians (new mint, 3.8K SOL volume)\n3. Solana Monkes (floor up 5.2%)\nWould you like detailed analytics on any of these collections?",
-            "I've analyzed your NFT's rarity score from Tensor data. Your Mad Lads #4289 has a rarity rank of 612/10,000 with rare 'Laser Eyes' and 'Gold Chain' traits. This puts it in the top 6.12% of the collection, with a current floor price of approximately 16.8 SOL.",
-            "Based on historical trends and recent trading activity, I predict the Tensorians floor price could increase 30-40% in the next 48 hours due to the upcoming utility announcement. Would you like me to set up floor price alerts?",
-            "The most successful mints in the past 24 hours are Solana Monkes Gen 3, with a mint price of 3 SOL now trading at 12 SOL floor, and Claynosaurz Eggs at 1.5 SOL now at a 4.2 SOL floor. Would you like to discover upcoming mints?"
-        ],
-        builder: [
-            "I've analyzed your Anchor code and found the CPI error. You're trying to call an instruction on a PDA account that wasn't properly derived. Here's the fix:\n```rust\n// Instead of this\nlet pda_account = next_account_info(accounts_iter)?;\n\n// Do this - make sure to use the correct seeds\nlet (pda_account, bump) = Pubkey::find_program_address(\n    &[b\"escrow\", authority.key.as_ref()],\n    program_id\n);\n```\nThis ensures the correct PDA is derived for the CPI call.",
-            "Here's a starter Anchor token swap contract for you:\n```rust\nuse anchor_lang::prelude::*;\nuse anchor_spl::token::{self, Token, TokenAccount, Transfer};\n\n#[program]\nmod token_swap {\n    use super::*;\n\n    pub fn initialize_swap(\n        ctx: Context<InitializeSwap>,\n        amount_a: u64,\n        amount_b: u64,\n    ) -> Result<()> {\n        let swap = &mut ctx.accounts.swap;\n        swap.initializer = ctx.accounts.initializer.key();\n        swap.token_a_account = ctx.accounts.token_a_account.key();\n        swap.token_b_account = ctx.accounts.token_b_account.key();\n        swap.amount_a = amount_a;\n        swap.amount_b = amount_b;\n        swap.is_active = true;\n        Ok(())\n    }\n}\n\n#[derive(Accounts)]\npub struct InitializeSwap<'info> {\n    #[account(init, payer = initializer, space = 8 + 32 + 32 + 32 + 8 + 8 + 1)]\n    pub swap: Account<'info, TokenSwap>,\n    #[account(mut)]\n    pub initializer: Signer<'info>,\n    pub token_a_account: Account<'info, TokenAccount>,\n    pub token_b_account: Account<'info, TokenAccount>,\n    pub system_program: Program<'info, System>,\n}\n\n#[account]\npub struct TokenSwap {\n    pub initializer: Pubkey,\n    pub token_a_account: Pubkey,\n    pub token_b_account: Pubkey,\n    pub amount_a: u64,\n    pub amount_b: u64,\n    pub is_active: bool,\n}\n```"
-        ]
-    };
-
-    // Simulate a delay for AI response
-    setTimeout(() => {
-        try {
-            const response = responses[currentAssistant][Math.floor(Math.random() * responses[currentAssistant].length)];
-            updateTypingMessageWithContent(response);
-        } catch (error) {
-            console.error('Error fetching AI response:', error);
-            updateTypingMessageWithContent('Sorry, something went wrong.');
-        } finally {
-            isTyping = false; // Reset typing state
+    try {
+        // Prepare the correct request payload structure
+        const payload = {
+            user_input: userMessage
+        };
+        
+        console.log('Sending API request with payload:', payload);
+        
+        // Make API call
+        const response = await fetch(API_URL, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Accept': 'application/json'
+            },
+            body: JSON.stringify(payload)
+        });
+        
+        // Check if the request was successful
+        if (!response.ok) {
+            const errorText = await response.text();
+            throw new Error(`API request failed with status ${response.status}: ${errorText}`);
         }
-    }, 2000);
+        
+        // Parse the response
+        const data = await response.json();
+        
+        // Check if the response contains the expected data
+        const aiResponse = data.response || data.message || data.reply || data;
+        
+        // If aiResponse is an object and not a string, convert it
+        const finalResponse = typeof aiResponse === 'string' 
+            ? aiResponse 
+            : JSON.stringify(aiResponse, null, 2);
+        
+        // Update the chat with the AI response
+        updateTypingMessageWithContent(finalResponse);
+    } catch (error) {
+        console.error('Error fetching AI response:', error);
+        updateTypingMessageWithContent('Sorry, I encountered an error while processing your request. Please try again later.');
+    } finally {
+        isTyping = false; // Reset typing state
+    }
 }
-
 // Function to scroll to the bottom of the chat
 function scrollToBottom() {
     chatMessages.scrollTop = chatMessages.scrollHeight;
