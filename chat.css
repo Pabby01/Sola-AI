@@ -523,6 +523,11 @@
 .input-container {
   display: flex;
   align-items: center;
+
+  @media (max-width: 768px) {
+    flex-direction: column;
+    align-items: stretch;
+  }
   background-color: var(--secondary-bg);
   border: 1px solid var(--border-color);
   border-radius: 16px;
