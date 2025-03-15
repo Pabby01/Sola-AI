@@ -1,5 +1,9 @@
 // Main JavaScript for Solana AI Chat Interface
 
+import { WalletAdapterNetwork } from '@solana/wallet-adapter-base';
+import { Connection, clusterApiUrl } from '@solana/web3.js';
+import { PhantomWalletAdapter, SolflareWalletAdapter } from '@solana/wallet-adapter-wallets';
+
 // DOM Elements
 const sidebar = document.getElementById('sidebar');
 const sidebarToggle = document.getElementById('sidebar-toggle');
@@ -481,14 +485,39 @@ function deleteConversation(index) {
     updatePreviousChats();
 }
 
-// Connect wallet function (placeholder)
-function connectWallet() {
-    // This would integrate with Solana wallet adapter
-    const walletBtn = document.getElementById('connect-wallet');
-    walletBtn.innerHTML = '<i class="fas fa-wallet"></i><span>Connected</span>';
-    walletBtn.classList.add('connected');
-    
-    addSystemMessage('Wallet connected successfully');
+// Connect wallet function
+async function connectWallet() {
+    // Initialize wallet adapters
+    const network = WalletAdapterNetwork.Mainnet; // Change to 'Devnet' or 'Testnet' if needed
+    const wallets = [
+        new PhantomWalletAdapter(),
+        new SolflareWalletAdapter()
+    ];
+
+    // Create a connection to the Solana blockchain
+    const connection = new Connection(clusterApiUrl(network), 'confirmed');
+
+    // Attempt to connect to the first available wallet
+    for (const wallet of wallets) {
+        try {
+            await wallet.connect();
+            const publicKey = wallet.publicKey.toString();
+
+            // Update the UI to show the connected wallet
+            const walletBtn = document.getElementById('connect-wallet');
+            walletBtn.innerHTML = `<i class="fas fa-wallet"></i><span>${publicKey.slice(0, 4)}...${publicKey.slice(-4)}</span>`;
+            walletBtn.classList.add('connected');
+
+            // Add a system message
+            addSystemMessage(`Wallet connected: ${publicKey}`);
+            return; // Exit after successfully connecting
+        } catch (error) {
+            console.warn(`Failed to connect with ${wallet.name}:`, error);
+        }
+    }
+
+    // If no wallet could connect, show an error message
+    addSystemMessage('Failed to connect to any wallet. Please ensure you have a supported wallet installed.');
 }
 
 // Initialize the app when the DOM is fully loaded
